@@ -190,6 +190,8 @@ typedef struct _GLFWwindowX11
     // Whether the visual supports framebuffer transparency
     GLFWbool        transparent;
 
+    GLFWbool        dock;
+
     // Cached position and size used to filter out duplicate events
     int             width, height;
     int             xpos, ypos;

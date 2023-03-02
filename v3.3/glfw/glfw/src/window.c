@@ -201,6 +201,7 @@ GLFWAPI GLFWwindow* glfwCreateWindow(int width, int height,
     window->resizable   = wndconfig.resizable;
     window->decorated   = wndconfig.decorated;
     window->autoIconify = wndconfig.autoIconify;
+    /* window->dock = wndconfig.dock; */
     window->floating    = wndconfig.floating;
     window->focusOnShow = wndconfig.focusOnShow;
     window->cursorMode  = GLFW_CURSOR_NORMAL;
@@ -242,6 +243,7 @@ void glfwDefaultWindowHints(void)
     _glfw.hints.window.decorated    = GLFW_TRUE;
     _glfw.hints.window.focused      = GLFW_TRUE;
     _glfw.hints.window.autoIconify  = GLFW_TRUE;
+    /* _glfw.hints.window.dock = GLFW_FALSE; */
     _glfw.hints.window.centerCursor = GLFW_TRUE;
     _glfw.hints.window.focusOnShow  = GLFW_TRUE;
 
@@ -269,6 +271,9 @@ GLFWAPI void glfwWindowHint(int hint, int value)
 
     switch (hint)
     {
+        case GLFW_DOCK:
+            _glfw.hints.window.dock = value ? GLFW_TRUE : GLFW_FALSE;
+            return;
         case GLFW_RED_BITS:
             _glfw.hints.framebuffer.redBits = value;
             return;

@@ -75,6 +75,7 @@ const (
 	TransparentFramebuffer Hint = C.GLFW_TRANSPARENT_FRAMEBUFFER // Specifies whether the framebuffer should be transparent.
 	FocusOnShow            Hint = C.GLFW_FOCUS_ON_SHOW           // Specifies whether the window will be given input focus when glfwShowWindow is called.
 	ScaleToMonitor         Hint = C.GLFW_SCALE_TO_MONITOR        // Specified whether the window content area should be resized based on the monitor content scale of any monitor it is placed on. This includes the initial placement when the window is created.
+	Dock                   Hint = C.GLFW_DOCK                    // Specified whether the window content area should be resized based on the monitor content scale of any monitor it is placed on. This includes the initial placement when the window is created.
 )
 
 // Context related hints.

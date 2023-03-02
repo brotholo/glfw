@@ -359,6 +359,7 @@ static void updateNormalHints(_GLFWwindow* window, int width, int height)
 
     hints->flags |= PWinGravity;
     hints->win_gravity = StaticGravity;
+    /* hints->wndconfig= window; */
 
     XSetWMNormalHints(_glfw.x11.display, window->x11.handle, hints);
     XFree(hints);
@@ -701,7 +702,15 @@ static GLFWbool createNativeWindow(_GLFWwindow* window,
                         (unsigned char*) &pid, 1);
     }
 
-    if (_glfw.x11.NET_WM_WINDOW_TYPE && _glfw.x11.NET_WM_WINDOW_TYPE_NORMAL)
+    if (wndconfig->dock)
+    {
+        Atom type = _glfw.x11.NET_WM_WINDOW_TYPE_DOCK;
+        XChangeProperty(_glfw.x11.display,  window->x11.handle,
+                        _glfw.x11.NET_WM_WINDOW_TYPE, XA_ATOM, 32,
+                        PropModeReplace, (unsigned char*) &type, 1);
+    }
+    if (!wndconfig->dock && _glfw.x11.NET_WM_WINDOW_TYPE && _glfw.x11.NET_WM_WINDOW_TYPE_NORMAL)
+   /* if (_glfw.x11.NET_WM_WINDOW_TYPE && _glfw.x11.NET_WM_WINDOW_TYPE_NORMAL) */
     {
         Atom type = _glfw.x11.NET_WM_WINDOW_TYPE_NORMAL;
         XChangeProperty(_glfw.x11.display,  window->x11.handle,

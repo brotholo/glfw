@@ -1125,6 +1125,7 @@ extern "C" {
 #define GLFW_COCOA_MENUBAR          0x00051002
 /*! @} */
 
+#define GLFW_DOCK                   0x00051003
 #define GLFW_DONT_CARE              -1
 
 
